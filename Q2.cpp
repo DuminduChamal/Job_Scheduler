@@ -8,24 +8,34 @@ struct Job {
     int profit; 
 }; 
 
-bool compareTwoStudents(Job a, Job b) 
+bool compareJobProfits(Job a, Job b) 
 { 
-    return (a.profit > b.profit); 
+    if(a.profit > b.profit)		
+		return 1;
+	else
+		return 0;
 }
 
 int main()
 {
 	int n,i;
-	printf("Enter the number of jobs : ");
-	scanf("%d",&n);
+	cout<<"Enter the number of jobs : ";
+	cin>>n;
 	struct Job jobArr[n];
 	for(i=0;i<n;i++)
 	{
-		printf("Enter the job id of job %d : ",i+1);
-		scanf("%s",&jobArr[i].jobid);
-		printf("Enter the deadline of job %d : ",i+1);
-		scanf("%d",&jobArr[i].deadline);
-		printf("Enter the profit of job %d : ",i+1);
-		scanf("%d",&jobArr[i].profit);
+		cout<<"Enter the job id of job "<<i+1<<": ";
+		cin>>jobArr[i].jobid;
+		cout<<"Enter the deadline of job "<<i+1<<": ";
+		cin>>jobArr[i].deadline;
+		cout<<"Enter the profit of job "<<i+1<<": ";
+		cin>>jobArr[i].profit;
+		cout<<"Job Successfully Added!\n";
+	}
+	sort(jobArr,jobArr+n,compareJobProfits);
+	
+	for(i=0;i<n;i++)
+	{
+		cout << "job id : " << jobArr[i].jobid<<"\n";
 	}
 }
